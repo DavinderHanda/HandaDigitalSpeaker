@@ -25,13 +25,14 @@ It uses the ESP32’s built-in **LEDC PWM hardware** to generate clean tone-base
 4. Click **Install**
 
 ### 🔹 Option 2 — Manual Installation
-```bash
+
 git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git
 
 **Copy the folder to:**
 Documents/Arduino/libraries/
 
 **⚡ Quick Start Example**
+```bash
 #include <HandaDigitalSpeaker.h>
 
 void setup() {
@@ -43,7 +44,7 @@ void setup() {
 void loop() {
   // Nothing here — just one-time sound
 }
-
+```
 🔁 **Continuous Sound Example**
 
 You can now loop a sound indefinitely using playSoundLoop(), and stop it with stopSound().
@@ -113,5 +114,6 @@ void setup() {
 
 Davinder Handa
 🔗 GitHub: @DavinderHanda
+
 
 
