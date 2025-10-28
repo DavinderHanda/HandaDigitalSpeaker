@@ -1,4 +1,4 @@
-#include <digital_sound.h>
+#include <HandaDigitalSpeaker.h>
 
 void setup() {
   Serial.begin(115200);
@@ -47,3 +47,4 @@ void setup() {
 void loop() {
   // Nothing here — just run setup once
 }
+
