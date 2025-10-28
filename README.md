@@ -1,35 +1,38 @@
-**🎵 HandaDigitalSpeaker —  ESP32 Digital Sound Library**
+# 🎵 HandaDigitalSpeaker — ESP32 Digital Sound Library
 
-A lightweight, fast, and flexible digital sound library for ESP32, made for SmartElex digital speaker modules.
-It uses the ESP32’s built-in LEDC PWM hardware to generate clear tone-based sound effects — from system beeps to iPhone-like digital alerts.
+A lightweight, fast, and flexible digital sound library for **ESP32**, made for **SmartElex digital speaker modules**.  
+It uses the ESP32’s built-in **LEDC PWM hardware** to generate clean tone-based sound effects — from system beeps to iPhone-like alerts.
 
-**📦 Features******
+---
 
-✅ Over 35 built-in sounds (system + digital + iPhone-style)
-✅ One-line play commands (e.g. playSound("ok"))
-✅ Continuous play mode — loop a sound until stopped
-✅ Simple LED PWM (LEDC) based implementation — no DAC or extra hardware needed
-✅ Extremely low CPU usage and non-blocking loop mode
+## 📦 Features
 
-**🛠️ Installation**
+✅ 35+ built-in sounds — system, alert, and digital styles  
+✅ Simple one-line commands (`playSound("ok")`)  
+✅ **Continuous loop mode** — play any sound repeatedly until stopped  
+✅ No DAC or extra hardware required  
+✅ Extremely low CPU usage using ESP32’s hardware PWM  
+✅ Compact and dependency-free library
 
-Open Arduino IDE → Sketch → Include Library → Manage Libraries
+---
 
-**Search for HandaDigitalSpeaker**
+## 🛠️ Installation
 
-**Click Install**
+### 🔹 Option 1 — Using Arduino Library Manager
+1. Open **Arduino IDE**
+2. Go to **Sketch → Include Library → Manage Libraries**
+3. Search for **HandaDigitalSpeaker**
+4. Click **Install**
 
-**or manually:
+### 🔹 Option 2 — Manual Installation
+```bash
+git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git
 
-git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git**
-
-
-Copy the folder to:
-
-**Documents/Arduino/libraries/**
+**Copy the folder to:**
+Documents/Arduino/libraries/
 
 **⚡ Quick Start Example**
-**#include <HandaDigitalSpeaker.h>**
+#include <HandaDigitalSpeaker.h>
 
 void setup() {
   Serial.begin(115200);
@@ -41,17 +44,17 @@ void loop() {
   // Nothing here — just one-time sound
 }
 
-**🔁 Continuous Sound Example**
+🔁 **Continuous Sound Example**
 
-You can now loop a sound indefinitely using playSoundLoop(), and stop it using stopSound().
+You can now loop a sound indefinitely using playSoundLoop(), and stop it with stopSound().
 
 #include <HandaDigitalSpeaker.h>
 
 void setup() {
   Serial.begin(115200);
-  initSoundPlayer(13);
+  initSoundPlayer(13);   // Speaker pin
 
-  playSoundLoop("aa");   // Start looping sound (aa pattern)
+  playSoundLoop("aa");   // Start looping "aa" sound
 }
 
 void loop() {
@@ -60,43 +63,55 @@ void loop() {
   delay(2000);
 }
 
-**🎚️ Functions Overview
-Function	Description	Example**
-initSoundPlayer(pin)	Initialize sound player on a specific pin	initSoundPlayer(25);
-playSound("name")	Play a one-time sound	playSound("ok");
-playSoundLoop("name")	Play sound continuously (loop)	playSoundLoop("aa");
-stopSound()	Stop continuous sound	stopSound();
-ledcWriteTone(pin, freq)	Underlying ESP32 LEDC function	—
+🎚️ **Functions Overview**
 
-**🎵 Available Sounds
-Type	Command	Description**
-System	aa, da, sdp, tdb, tct, ud, dd	Simple up/down/alert tones
-Alerts	ok, err, bsy, rst, tmr, att, slp	Status and warning sounds
-Digital	iph, pop, bbl, drp, msg, noti, clk, zap, tch	iPhone-like notification sounds
-Utility	sb, slb, dbl, vsc, chn, fahls, wup, sllt	Miscellaneous effects
+| Function                   | Description                                   | Example                |
+| -------------------------- | --------------------------------------------- | ---------------------- |
+| `initSoundPlayer(pin)`     | Initialize the sound player on a specific pin | `initSoundPlayer(25);` |
+| `playSound("name")`        | Play a one-time sound                         | `playSound("ok");`     |
+| `playSoundLoop("name")`    | Play a sound continuously (loop)              | `playSoundLoop("aa");` |
+| `stopSound()`              | Stop a continuous sound                       | `stopSound();`         |
+| `ledcWriteTone(pin, freq)` | Underlying ESP32 LEDC tone generator          | —                      |
 
+**🎵 Available Sounds**
+| Type        | Command                                                        | Description                 |
+| ----------- | -------------------------------------------------------------- | --------------------------- |
+| **System**  | `aa`, `da`, `sdp`, `tdb`, `tct`, `ud`, `dd`                    | Simple up/down/alert tones  |
+| **Alerts**  | `ok`, `err`, `bsy`, `rst`, `tmr`, `att`, `slp`                 | Status and warning tones    |
+| **Digital** | `iph`, `pop`, `bbl`, `drp`, `msg`, `noti`, `clk`, `zap`, `tch` | New-style digital sounds    |
+| **Utility** | `sb`, `slb`, `dbl`, `vsc`, `chn`, `fahls`, `wup`, `sllt`       | Miscellaneous effects       |
+**
+🧩 Example — Sound Command Test**
 
-**🧩 Example — Sound Command Test**
+Control sounds dynamically via Serial Monitor commands:
+
 #include <HandaDigitalSpeaker.h>
 
 void setup() {
   Serial.begin(115200);
-  initSoundPlayer(25);
+  initSoundPlayer(13);  // Speaker pin
 
   playSound("ok");    // OK tone
   delay(500);
   playSound("err");   // Error tone
   delay(500);
-  playSound("iph");   // iPhone-like tone
+  playSound("iph");   // iPhone-style tone
 }
 
-**⚙️ Notes**
+****⚙️ Notes****
+🧠 Works only on ESP32 (not ESP8266 or AVR)
 
-Works only on ESP32 (not ESP8266 or AVR).
+🎚️ Uses LEDC hardware PWM (default: 2 kHz, 8-bit)
 
-Uses LEDC channel auto-attach (default 2 kHz, 8-bit resolution).
+🔌 Default speaker pin: GPIO 25 (configurable)
 
-Speaker pin is configurable; default is GPIO 25.
+✅ Tested on ESP32 DevKit, ESP32-S3, and SmartElex boards
 
-Tested on ESP32 DevKit, ESP32-S3, and SmartElex boards.
+📁 Supports loop and stop control for continuous sounds
+
+🧑‍💻 Author
+
+Davinder Handa
+🔗 GitHub: @DavinderHanda
+
 
