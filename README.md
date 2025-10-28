@@ -1,4 +1,4 @@
-# 🎵 Handa Digital Speaker for DigitalSound (v1.0.1)
+# 🎵 Handa Digital Speaker for DigitalSound (v1.0.2)
 
 A simple and fun sound library for **ESP32** that lets you play **pre-defined tones, alerts, and beeps** using the **SmartElex Digital Speaker** via the **LEDC hardware PWM driver**.
 
@@ -84,3 +84,4 @@ cmds are ""
 |  `brz`  | Breeze whoosh *(soft ambient)*     |
 |  `zap`  | Electric zap *(power tone)*        |
 |  `tch`  | Touch blip *(fast tap)*            |
+
