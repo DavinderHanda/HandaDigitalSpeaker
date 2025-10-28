@@ -23,7 +23,7 @@ It uses the ESP32’s built-in **LEDC PWM hardware** to generate clean tone-base
 2. Go to **Sketch → Include Library → Manage Libraries**
 3. Search for **HandaDigitalSpeaker**
 4. Click **Install**
-
+---
 ### 🔹 Option 2 — Manual Installation
 
 git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git
@@ -31,6 +31,7 @@ git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git
 **Copy the folder to:**
 Documents/Arduino/libraries/
 
+---
 **⚡ Quick Start Example**
 ```bash
 #include <HandaDigitalSpeaker.h>
@@ -45,10 +46,11 @@ void loop() {
   // Nothing here — just one-time sound
 }
 ```
+---
 🔁 **Continuous Sound Example**
 
 You can now loop a sound indefinitely using playSoundLoop(), and stop it with stopSound().
-
+```bash
 #include <HandaDigitalSpeaker.h>
 
 void setup() {
@@ -63,7 +65,8 @@ void loop() {
   stopSound();           // Stop after 5 seconds
   delay(2000);
 }
-
+```
+---
 🎚️ **Functions Overview**
 
 | Function                   | Description                                   | Example                |
@@ -74,6 +77,7 @@ void loop() {
 | `stopSound()`              | Stop a continuous sound                       | `stopSound();`         |
 | `ledcWriteTone(pin, freq)` | Underlying ESP32 LEDC tone generator          | —                      |
 
+---
 **🎵 Available Sounds**
 | Type        | Command                                                        | Description                 |
 | ----------- | -------------------------------------------------------------- | --------------------------- |
@@ -81,11 +85,13 @@ void loop() {
 | **Alerts**  | `ok`, `err`, `bsy`, `rst`, `tmr`, `att`, `slp`                 | Status and warning tones    |
 | **Digital** | `iph`, `pop`, `bbl`, `drp`, `msg`, `noti`, `clk`, `zap`, `tch` | New-style digital sounds    |
 | **Utility** | `sb`, `slb`, `dbl`, `vsc`, `chn`, `fahls`, `wup`, `sllt`       | Miscellaneous effects       |
+
+---
 **
 🧩 Example — Sound Command Test**
 
 Control sounds dynamically via Serial Monitor commands:
-
+```bash
 #include <HandaDigitalSpeaker.h>
 
 void setup() {
@@ -96,9 +102,11 @@ void setup() {
   delay(500);
   playSound("err");   // Error tone
   delay(500);
-  playSound("iph");   // iPhone-style tone
-}
 
+}
+```
+
+---
 ****⚙️ Notes****
 🧠 Works only on ESP32 (not ESP8266 or AVR)
 
@@ -110,10 +118,13 @@ void setup() {
 
 📁 Supports loop and stop control for continuous sounds
 
+---
+
 🧑‍💻 Author
 
 Davinder Handa
 🔗 GitHub: @DavinderHanda
+
 
 
 
