@@ -3,7 +3,7 @@
 A lightweight, fast, and flexible digital sound library for ESP32, made for SmartElex digital speaker modules.
 It uses the ESP32’s built-in LEDC PWM hardware to generate clear tone-based sound effects — from system beeps to iPhone-like digital alerts.
 
-📦 Features
+**📦 Features******
 
 ✅ Over 35 built-in sounds (system + digital + iPhone-style)
 ✅ One-line play commands (e.g. playSound("ok"))
@@ -11,7 +11,7 @@ It uses the ESP32’s built-in LEDC PWM hardware to generate clear tone-based so
 ✅ Simple LED PWM (LEDC) based implementation — no DAC or extra hardware needed
 ✅ Extremely low CPU usage and non-blocking loop mode
 
-🛠️ Installation
+**🛠️ Installation**
 
 Open Arduino IDE → Sketch → Include Library → Manage Libraries
 
@@ -33,7 +33,7 @@ Copy the folder to:
 
 void setup() {
   Serial.begin(115200);
-  initSoundPlayer(25);      // Initialize speaker on GPIO 25
+  initSoundPlayer(13);      // Initialize speaker on GPIO 13
   playSound("ok");          // Play simple OK sound
 }
 
@@ -49,7 +49,7 @@ You can now loop a sound indefinitely using playSoundLoop(), and stop it using s
 
 void setup() {
   Serial.begin(115200);
-  initSoundPlayer(25);
+  initSoundPlayer(13);
 
   playSoundLoop("aa");   // Start looping sound (aa pattern)
 }
@@ -67,12 +67,15 @@ playSound("name")	Play a one-time sound	playSound("ok");
 playSoundLoop("name")	Play sound continuously (loop)	playSoundLoop("aa");
 stopSound()	Stop continuous sound	stopSound();
 ledcWriteTone(pin, freq)	Underlying ESP32 LEDC function	—
+
 **🎵 Available Sounds
 Type	Command	Description**
 System	aa, da, sdp, tdb, tct, ud, dd	Simple up/down/alert tones
 Alerts	ok, err, bsy, rst, tmr, att, slp	Status and warning sounds
 Digital	iph, pop, bbl, drp, msg, noti, clk, zap, tch	iPhone-like notification sounds
 Utility	sb, slb, dbl, vsc, chn, fahls, wup, sllt	Miscellaneous effects
+
+
 **🧩 Example — Sound Command Test**
 #include <HandaDigitalSpeaker.h>
 
@@ -96,3 +99,4 @@ Uses LEDC channel auto-attach (default 2 kHz, 8-bit resolution).
 Speaker pin is configurable; default is GPIO 25.
 
 Tested on ESP32 DevKit, ESP32-S3, and SmartElex boards.
+
