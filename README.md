@@ -38,29 +38,49 @@ initSoundPlayer(13);  //13 is pin or use else.
 
 
 cmds are ""  
-| Command | Description / Event | Sound Pattern Description       |
-| :------ | :------------------ | :------------------------------ |
-| `aa`    | Startup             | Ascending arpeggio (C–E–G–C)    |
-| `sdp`   | Card Scan Success   | Short double ping               |
-| `tdb`   | Access Denied       | Three descending beeps          |
-| `admE`  | Admin Mode Enter    | Two confirmation tones (A→C)    |
-| `admX`  | Admin Mode Exit     | Two confirmation tones (C→A)    |
-| `dO`    | Door Open           | Upward “ding”                   |
-| `dC`    | Door Close          | Downward “dong”                 |
-| `dS`    | Door Stuck          | Repeated urgent short beeps     |
-| `emg`   | Emergency           | Fast alternating high/low siren |
-| `fire`  | Fire Alarm          | Long repeating rising siren     |
-| `ldw`   | Long Delay Warning  | Single long low tone            |
-| `bp`    | Beep                | Single short beep               |
-| `lbp`   | Long Beep           | Single long beep                |
-| `pb`    | Push Button         | Very short click/beep           |
-| `iph`   | iPhone-like Tone    | Soft melodic chime              |
-| `bub`   | Bubble Message      | Water-drop bubble sound         |
-| `drop`  | Water Drop          | Slow descending tone            |
-| `ntf`   | Notification        | Ping-ping confirmation tone     |
-| `err`   | Error Alert         | Low-high repeated tone          |
-| `ok`    | Confirmation        | Bright double tone              |
-| `rdy`   | Ready               | Rising ready tone               |
-| `slp`   | Sleep Mode          | Descending fade tone            |
-| `wup`   | Wake Up             | Fast ascending beeps            |
 
+cmds are ""  
+| Command | Description                                     |
+| :-----: | ----------------------------------------------- |
+|   `aa`  | Ascending arpeggio *(startup sound)*            |
+|   `da`  | Descending arpeggio *(shutdown)*                |
+|  `sdp`  | Short double ping *(success beep)*              |
+|  `tdb`  | Triple descending beep *(error alert)*          |
+|  `tct`  | Two-tone complete sound *(task done)*           |
+|   `ud`  | Upward tone *(progress start)*                  |
+|   `dd`  | Downward tone *(progress end)*                  |
+|  `ursb` | USB-like quick repeat beeps *(connect sound)*   |
+| `fahls` | Fast alternating high-low beeps *(alarm alert)* |
+|  `lrs`  | Long rising sweep *(emergency / siren)*         |
+|  `sllt` | Slow long tone *(door stuck or waiting)*        |
+|   `sb`  | Short beep *(button press)*                     |
+|  `slb`  | Slow long beep *(warning)*                      |
+|  `vsc`  | Very short click *(touch feedback)*             |
+|  `dbl`  | Double low beep *(info alert)*                  |
+|  `bhi`  | Double high beep *(positive action)*            |
+|  `chn`  | Three ascending chime tones *(welcome tone)*    |
+|  `err`  | Triple buzz *(error or denied access)*          |
+|   `ok`  | Success tone *(access granted)*                 |
+|  `bsy`  | Busy tone *(processing)*                        |
+|  `rst`  | Reset melody *(system reboot)*                  |
+|  `wup`  | Wake-up tone *(ready state)*                    |
+|  `slp`  | Sleep tone *(system idle)*                      |
+|  `tmr`  | Timer alert *(timeout or delay)*                |
+|  `att`  | Attention tone *(5 short beeps)*                |
+
+
+| Command | Description                        |
+| :-----: | ---------------------------------- |
+|  `iph`  | iPhone-style alert tone            |
+|  `pop`  | Soft pop sound *(UI tap)*          |
+|  `bbl`  | Bubble rise tone *(bloop effect)*  |
+|  `drp`  | Water drop tone                    |
+|  `msg`  | Message notification               |
+|  `noti` | Notification alert *(modern tone)* |
+|  `clk`  | Click tick tone *(key press)*      |
+|  `swp`  | Sweep upward *(open animation)*    |
+|  `swd`  | Sweep downward *(close animation)* |
+|  `wtr`  | Water drip bubbles *(fun effect)*  |
+|  `brz`  | Breeze whoosh *(soft ambient)*     |
+|  `zap`  | Electric zap *(power tone)*        |
+|  `tch`  | Touch blip *(fast tap)*            |
