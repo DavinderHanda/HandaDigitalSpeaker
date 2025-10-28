@@ -2,8 +2,8 @@
 // Digital Sound Library for ESP32
 // Author: Davinder Handa
 // ============================================================
-#ifndef DIGITAL_SOUND_H
-#define DIGITAL_SOUND_H
+#ifndef HandaDigitalSpeaker_H
+#define HandaDigitalSpeaker_H
 
 
 #include <Arduino.h>
@@ -94,3 +94,4 @@ inline void initSoundPlayer(int pin=25){
 }
 
 #endif
+
