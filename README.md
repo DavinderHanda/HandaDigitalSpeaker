@@ -1,87 +1,75 @@
-# 🎵 Handa Digital Speaker for DigitalSound (v1.0.2)
+🎵 HandaDigitalSpeaker —  ESP32 Digital Sound Library
 
-A simple and fun sound library for **ESP32** that lets you play **pre-defined tones, alerts, and beeps** using the **SmartElex Digital Speaker** via the **LEDC hardware PWM driver**.
+A lightweight, fast, and flexible digital sound library for ESP32, made for SmartElex digital speaker modules or other digital Speakers.
+It uses the ESP32’s built-in LEDC PWM hardware to generate clear tone-based sound effects — from system beeps to iPhone-like digital alerts.
 
----
+📦 Features
 
-## 🔊 Features
+✅ Over 35 built-in sounds (system + digital + iPhone-style)
+✅ One-line play commands (e.g. playSound("ok"))
+✅ Continuous play mode — loop a sound until stopped
+✅ Simple LED PWM (LEDC) based implementation — no DAC or extra hardware needed
+✅ Extremely low CPU usage and non-blocking loop mode
 
-- ✅ Simple **one-line playback** → `playSound("aa");`
-- 🎶 Includes **20+ built-in sound effects**
-- 🧠 Human-readable short aliases (like `"aa"` for ascending arpeggio)
-- 🔧 Adjustable **speaker pin** using `initSoundPlayer(pin)`
-- ⚙️ Works with **LEDC**, no DAC or I2S required
-- ⚡ Lightweight and fast for embedded use (ESP32 / ESP32-S3)
+🛠️ Installation
 
----
+Open Arduino IDE → Sketch → Include Library → Manage Libraries
 
-## 📦 Installation
+Search for HandaDigitalSpeaker
 
-1. Download this library as a ZIP or from the Arduino Library Manager (search **SmartElexSound**).
-2. In Arduino IDE → **Sketch → Include Library → Add .ZIP Library…**
-3. Include in your sketch:
-   
-   #include <HandaDigitalSpeaker.h>
+Click Install
 
- 
+or manually:
 
-   setup(){
-initSoundPlayer(13);  //13 is pin or use else.
-
- playSound("aa");       // Startup ascending arpeggio
-  delay(1000);
-
-  playSound("sdp");      // Short double ping
-  delay(1000);
-   }
+git clone https://github.com/DavinderHanda/HandaDigitalSpeaker.git
 
 
+Copy the folder to:
 
-cmds are ""  
+Documents/Arduino/libraries/
 
-cmds are ""  
-| Command | Description                                     |
-| :-----: | ----------------------------------------------- |
-|   `aa`  | Ascending arpeggio *(startup sound)*            |
-|   `da`  | Descending arpeggio *(shutdown)*                |
-|  `sdp`  | Short double ping *(success beep)*              |
-|  `tdb`  | Triple descending beep *(error alert)*          |
-|  `tct`  | Two-tone complete sound *(task done)*           |
-|   `ud`  | Upward tone *(progress start)*                  |
-|   `dd`  | Downward tone *(progress end)*                  |
-|  `ursb` | USB-like quick repeat beeps *(connect sound)*   |
-| `fahls` | Fast alternating high-low beeps *(alarm alert)* |
-|  `lrs`  | Long rising sweep *(emergency / siren)*         |
-|  `sllt` | Slow long tone *(door stuck or waiting)*        |
-|   `sb`  | Short beep *(button press)*                     |
-|  `slb`  | Slow long beep *(warning)*                      |
-|  `vsc`  | Very short click *(touch feedback)*             |
-|  `dbl`  | Double low beep *(info alert)*                  |
-|  `bhi`  | Double high beep *(positive action)*            |
-|  `chn`  | Three ascending chime tones *(welcome tone)*    |
-|  `err`  | Triple buzz *(error or denied access)*          |
-|   `ok`  | Success tone *(access granted)*                 |
-|  `bsy`  | Busy tone *(processing)*                        |
-|  `rst`  | Reset melody *(system reboot)*                  |
-|  `wup`  | Wake-up tone *(ready state)*                    |
-|  `slp`  | Sleep tone *(system idle)*                      |
-|  `tmr`  | Timer alert *(timeout or delay)*                |
-|  `att`  | Attention tone *(5 short beeps)*                |
+⚡ Quick Start Example
+#include <HandaDigitalSpeaker.h>
 
+void setup() {
+  Serial.begin(115200);
+  initSoundPlayer(25);      // Initialize speaker on GPIO 25
+  playSound("ok");          // Play simple OK sound
+}
 
-| Command | Description                        |
-| :-----: | ---------------------------------- |
-|  `iph`  | iPhone-style alert tone            |
-|  `pop`  | Soft pop sound *(UI tap)*          |
-|  `bbl`  | Bubble rise tone *(bloop effect)*  |
-|  `drp`  | Water drop tone                    |
-|  `msg`  | Message notification               |
-|  `noti` | Notification alert *(modern tone)* |
-|  `clk`  | Click tick tone *(key press)*      |
-|  `swp`  | Sweep upward *(open animation)*    |
-|  `swd`  | Sweep downward *(close animation)* |
-|  `wtr`  | Water drip bubbles *(fun effect)*  |
-|  `brz`  | Breeze whoosh *(soft ambient)*     |
-|  `zap`  | Electric zap *(power tone)*        |
-|  `tch`  | Touch blip *(fast tap)*            |
+void loop() {
+  // Nothing here — just one-time sound
+}
 
+🔁 Continuous Sound Example
+
+You can now loop a sound indefinitely using playSoundLoop(), and stop it using stopSound().
+
+#include <HandaDigitalSpeaker.h>
+
+void setup() {
+  Serial.begin(115200);
+  initSoundPlayer(25);
+
+  playSoundLoop("aa");   // Start looping sound (aa pattern)
+}
+
+void loop() {
+  delay(5000);
+  stopSound();           // Stop after 5 seconds
+  delay(2000);
+}
+
+🎚️ Functions Overview
+Function	Description	Example
+initSoundPlayer(pin)	Initialize sound player on a specific pin	initSoundPlayer(25);
+playSound("name")	Play a one-time sound	playSound("ok");
+playSoundLoop("name")	Play sound continuously (loop)	playSoundLoop("aa");
+stopSound()	Stop continuous sound	stopSound();
+ledcWriteTone(pin, freq)	Underlying ESP32 LEDC function	—
+🎵 Available Sounds
+Type	Command	Description
+System	aa, da, sdp, tdb, tct, ud, dd	Simple up/down/alert tones
+Alerts	ok, err, bsy, rst, tmr, att, slp	Status and warning sounds
+Digital	iph, pop, bbl, drp, msg, noti, clk, zap, tch	iPhone-like notification sounds
+Utility	sb, slb, dbl, vsc, chn, fahls, wup, sllt	Miscellaneous effects
