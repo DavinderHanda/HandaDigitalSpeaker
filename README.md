@@ -1,4 +1,4 @@
-# 🎵 DigitalSound (v1)
+# 🎵 Handa Digital Speaker for DigitalSound (v1.0.1)
 
 A simple and fun sound library for **ESP32** that lets you play **pre-defined tones, alerts, and beeps** using the **SmartElex Digital Speaker** via the **LEDC hardware PWM driver**.
 
@@ -21,7 +21,7 @@ A simple and fun sound library for **ESP32** that lets you play **pre-defined to
 2. In Arduino IDE → **Sketch → Include Library → Add .ZIP Library…**
 3. Include in your sketch:
    
-   #include <digital_sound.h>
+   #include <HandaDigitalSpeaker.h>
 
  
 
@@ -63,3 +63,4 @@ cmds are ""
 | `rdy`   | Ready               | Rising ready tone               |
 | `slp`   | Sleep Mode          | Descending fade tone            |
 | `wup`   | Wake Up             | Fast ascending beeps            |
+
