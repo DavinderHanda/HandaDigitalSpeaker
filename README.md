@@ -79,12 +79,19 @@ void loop() {
 
 ---
 **🎵 Available Sounds**
-| Type        | Command                                                        | Description                 |
-| ----------- | -------------------------------------------------------------- | --------------------------- |
-| **System**  | `aa`, `da`, `sdp`, `tdb`, `tct`, `ud`, `dd`                    | Simple up/down/alert tones  |
-| **Alerts**  | `ok`, `err`, `bsy`, `rst`, `tmr`, `att`, `slp`                 | Status and warning tones    |
-| **Digital** | `iph`, `pop`, `bbl`, `drp`, `msg`, `noti`, `clk`, `zap`, `tch` | New-style digital sounds    |
-| **Utility** | `sb`, `slb`, `dbl`, `vsc`, `chn`, `fahls`, `wup`, `sllt`       | Miscellaneous effects       |
+| **Category**        | **Command(s)**                                                 | **Description**                     |
+| ------------------- | -------------------------------------------------------------- | ----------------------------------- |
+| **System**          | `aa`, `da`, `sdp`, `tdb`, `tct`, `ud`, `dd`                    | Simple up/down/alert tones          |
+| **Alerts**          | `ok`, `err`, `bsy`, `rst`, `tmr`, `att`, `slp`                 | Status and warning tones            |
+| **Digital**         | `iph`, `pop`, `bbl`, `drp`, `msg`, `noti`, `clk`, `zap`, `tch` | Modern digital notification FX      |
+| **Utility**         | `sb`, `slb`, `dbl`, `vsc`, `chn`, `fahls`, `wup`, `sllt`       | Miscellaneous utility effects       |
+| **Jingles**         | `jingle1`, `jingle2`, `jingle3`                                | Short and bright melodic jingles    |
+| **Startup / End**   | `start1`, `start2`, `end1`, `end2`                             | System start and shutdown tones     |
+| **Ready / Success** | `ready1`, `ready2`, `success1`, `success2`                     | System ready and success sounds     |
+| **Notify / OK**     | `notify1`, `notify2`, `ok1`, `ok2`                             | Notification and confirmation tones |
+| **Game / Reward**   | `coin1`, `coin2`, `win1`, `win2`, `fail1`                      | Game, reward, and fail effects      |
+| **Basic Sounds**    | `sound1` → `sound20`                                           | General-purpose tones (see below)   |
+
 
 ---
 **
@@ -124,6 +131,7 @@ void setup() {
 
 Davinder Handa
 🔗 GitHub: @DavinderHanda
+
 
 
 
